@@ -523,33 +523,25 @@ def main():
         f" — {pd.Timestamp(FECHA_HASTA):%d/%m/%Y}"
     )
 
-    st.markdown(
-        f"""
-        <div class="hero">
-            <div class="eyebrow">
-                OBSERVATORIO DEL AGUA · CORNARE / MARCO
-            </div>
-
-            <h1>Argelia, al ritmo del agua.</h1>
-
-            <p>
-                Una mirada al comportamiento del nivel
-                y a la continuidad de sus registros.
-            </p>
-
-            <span class="pill">
-                ESTACIÓN {CODIGO_ESTACION.zfill(2)}
-                · {NOMBRE_ESTACION.upper()}
-            </span>
-
-            <span class="pill">{ESTUDIANTE}</span>
-
-            <span class="pill">{periodo}</span>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    portada = (
+        '<div class="hero">'
+        '<div class="eyebrow">'
+        'OBSERVATORIO DEL AGUA · CORNARE / MARCO'
+        '</div>'
+        '<h1>Argelia, al ritmo del agua.</h1>'
+        '<p>Una mirada al comportamiento del nivel '
+        'y a la continuidad de sus registros.</p>'
+        '<span class="pill">'
+        f'ESTACIÓN {CODIGO_ESTACION.zfill(2)} · {NOMBRE_ESTACION.upper()}'
+        '</span>'
+        f'<span class="pill">{ESTUDIANTE}</span>'
+        f'<span class="pill">{periodo}</span>'
+        '</div>'
     )
 
+    st.markdown(portada, unsafe_allow_html=True)
+
+    
     st.caption(
         "Monitoreo de nivel · Consulta automática "
         "· Filtro de calidad: 1 · Fuente: CORNARE / MARCO"
