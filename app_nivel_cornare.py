@@ -186,6 +186,9 @@ def main():
     with st.spinner("Conectando con MARCO y leyendo las mediciones…"):
         try:
             registros, metadata, consultado = consultar_niveles(CODIGO_ESTACION, FECHA_DESDE, FECHA_HASTA, CALIDAD)
+            st.write("Ejemplo de los registros recibidos:")
+            st.json(registros[:2])
+            st.stop()
             df, descartados, duplicados = limpiar_registros(registros)
         except requests.exceptions.SSLError:
             st.error("No se pudo verificar el certificado HTTPS de MARCO. La conexión segura no se completó.")
