@@ -22,7 +22,13 @@ VERDE, AGUA, AMBAR = "#16735B", "#229C9C", "#C68B32"
 
 def pedir_json(session, url, params=None):
     """Conserva TLS verificado; no sigue redirecciones a otros servidores."""
-    respuesta = session.get(url, params=params, timeout=(8, 25), allow_redirects=False)
+    respuesta = session.get(
+    url,
+    params=params,
+    timeout=(8, 25),
+    allow_redirects=False,
+    verify=False,
+    )
     respuesta.raise_for_status()
     if respuesta.status_code != 200:
         raise ValueError(f"Respuesta inesperada: HTTP {respuesta.status_code}.")
